@@ -5,6 +5,7 @@
   "description": "A translate module for Kurea",
   "license": "MIT",
   "dependencies": {
+    "language-list": "0.0.3",
     "mstranslator": "^1.1.0"
   }
 }

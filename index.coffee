@@ -1,6 +1,7 @@
 module.exports = (Module) ->
 
 	MsTranslator = require "mstranslator"
+	lang = require('language-list')()
 
 	class TranslateModule extends Module
 		shortName: "Translate"
@@ -29,6 +30,22 @@ module.exports = (Module) ->
 					@initTranslator()
 				if @apiKey
 					[from, to, text] = [route.params.from, route.params.to, route.params.text]
+
+					if to.length isnt 2
+						toCode = lang.getLanguageCode to
+						if not toCode?
+							@reply origin, "#{to} is not a valid language"
+							return
+						to = toCode
+
+					if from.length isnt 2
+						fromCode = lang.getLanguageCode from
+						if not fromCode?
+							@reply origin, "#{from} is not a valid language"
+							return
+						from = fromCode
+
+					console.log to, from
 
 					@translator.initialize_token () =>
 						@translator.translate
