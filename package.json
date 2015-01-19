@@ -1,0 +1,10 @@
+{
+  "name": "kurea-contrib-translate",
+  "main": "index.coffee",
+  "version": "0.0.0",
+  "description": "A translate module for Kurea",
+  "license": "MIT",
+  "dependencies": {
+    "mstranslator": "^1.1.0"
+  }
+}
